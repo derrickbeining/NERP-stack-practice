@@ -8,7 +8,7 @@
     "build": "webpack",
     "build-watch": "webpack -w",
     "start": "nodemon server/start.js",
-    "start-dev": "webpack -w; nodemon server/start.js"
+    "start-dev": "nodemon -w ./browser/* -w ./server/* --exec 'npm run build' server/start.js"
   },
   "keywords": [
     "react",
