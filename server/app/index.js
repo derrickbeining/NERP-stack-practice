@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 module.exports = app.use(
   bodyParser.urlencoded({extended: true}),
   bodyParser.json(),
-  express.static(resolve(__dirname, '..', 'public')),
+  express.static(resolve(__dirname, '../../../', 'public')),
   require('./route'),
   require('./error')
 )
