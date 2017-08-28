@@ -2,13 +2,13 @@
 
 const express = require('express')
 const app = express()
-const db = require('../db')
+const dbSyncing = require('../db')
 const pkg = require('../package.json')
 
 app.use(require('./app'));
 
 if (module === require.main) {
-  db.attemptingSync
+  dbSyncing
     .then(() => {
       const server = app.listen(
         process.env.PORT || 1337,
@@ -18,6 +18,7 @@ if (module === require.main) {
         }
       )
     })
+    .catch(console.error.bind(console))
 }
   // Start listening only if we're the main module.
   /*

@@ -5,7 +5,7 @@ const apiRouter = require('express').Router()
 // I know this because we automatically send index.html for all requests that don't make sense in our backend.
 // Ideally you would have something to handle this, so if you have time try that out!
 
-apiRouter.use('/campus', require('./campus'))
-apiRouter.use('/student', require('./student'))
+apiRouter.use('/campuses', require('./campuses'))
+apiRouter.use('/students', require('./students'))
 
 module.exports = apiRouter

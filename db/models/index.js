@@ -8,8 +8,8 @@
 const Student = require('./student')
 const Campus = require('./campus')
 
-// Student.belongsTo(Campus)
-Campus.hasMany(Student)
+Student.Campus = Student.belongsTo(Campus)
+Campus.Students = Campus.hasMany(Student)
 
 module.exports = {
   Student,
