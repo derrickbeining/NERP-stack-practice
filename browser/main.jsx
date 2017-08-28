@@ -2,13 +2,16 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
+import Theme from 'material-ui/styles/MuiThemeProvider'
 
 import store from './store'
-import Root from './components/Root'
+import PaperContainer from './components/PaperContainer'
 
 render(
-  <Provider store={store}>
-    <Root />
-  </Provider>,
+  <Theme >
+    <Provider store={store}>
+      <PaperContainer />
+    </Provider>
+  </Theme>,
   document.getElementById('main')
 )

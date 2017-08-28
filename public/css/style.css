@@ -1,0 +1,11 @@
+html,
+body {
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+body * {
+    font-family: inherit;
+    font-size: inherit;
+}
