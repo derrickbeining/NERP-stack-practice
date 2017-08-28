@@ -27,6 +27,4 @@ module.exports = db.define('student', {
       isUrl: true
     }
   }
-}, {
-
-  })
+})
