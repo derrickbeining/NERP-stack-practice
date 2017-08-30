@@ -7,7 +7,7 @@
     "test": "mocha **/*.test.js *.test.js",
     "build": "webpack",
     "build-watch": "webpack -w",
-    "start": "nodemon server/start.js",
+    "start": "webpack -w & nodemon --watch server -e js,html server/start.js",
     "seed": "node ./db/seed"
   },
   "keywords": [
@@ -20,7 +20,7 @@
     "chalk": "^1.1.3",
     "express": "^4.14.0",
     "faker": "^4.1.0",
-    "material-ui": "^0.19.0",
+    "material-ui": "^1.0.0-beta.6",
     "pg": "^6.1.0",
     "pg-native": "^1.10.0",
     "react": "^15.3.2",
@@ -38,6 +38,9 @@
     "babel-loader": "^6.2.7",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "volleyball": "^1.4.1",
     "webpack": "^1.13.3"
   },
