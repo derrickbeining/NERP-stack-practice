@@ -41,8 +41,9 @@
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony-v2.8.22",
     "volleyball": "^1.4.1",
-    "webpack": "^1.13.3"
+    "webpack": "^3.5.5"
   },
   "repository": {
     "type": "git",
