@@ -6,8 +6,9 @@ import Router from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import history from './history'
 /* ----------------  COMPONENTS  ----------------------- */
-import NavFooter from '../components/Nav-Footer-Wrap'
-import PaperContainer from '../components/PaperContainer'
+// import NavFooter from '../components/Nav-Footer-Wrap'
+// import PaperContainer from '../components/PaperContainer'
+import Home from '../components/Home'
 /* ----------------  ROUTES COMPONENT ------------------ */
 
 class Routes extends Component {
@@ -19,13 +20,11 @@ class Routes extends Component {
   render () {
     return (
       <Router history={history}>
-        <NavFooter>
-          <Switch>
-            <Route exact path="/" component={PaperContainer} />
+        <Switch>
+          <Route exact path="/" component={Home} />
 
-            <Route component={PaperContainer} />
-          </Switch>
-        </NavFooter>
+          <Route component={Home} />
+        </Switch>
       </Router>
     )
   }
@@ -34,8 +33,8 @@ class Routes extends Component {
 
 /* -----------------   SUBSCRIBE ROUTES TO STORE    ------------------ */
 
-const mapState = null
-const mapDispatch = null
+// const mapState = null
+// const mapDispatch = null
 // (dispatch) => ({
 // loadInitialState: () => {
 //   // get all campuses
@@ -43,4 +42,5 @@ const mapDispatch = null
 // }
 // })
 
-export default connect(mapState, mapDispatch)(Routes)
+// export default connect(mapState, mapDispatch)(Routes)
+export default Routes
