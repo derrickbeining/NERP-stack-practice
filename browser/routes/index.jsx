@@ -6,25 +6,26 @@ import Router from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import history from './history'
 /* ----------------  COMPONENTS  ----------------------- */
-import Home from '../components'
+import NavFooter from '../components/Nav-Footer-Wrap'
+import PaperContainer from '../components/PaperContainer'
 /* ----------------  ROUTES COMPONENT ------------------ */
 
 class Routes extends Component {
 
-  componentDidMount () {
-    this.props.loadInitialState()
-  }
+  // componentDidMount () {
+  //   this.props.loadInitialState()
+  // }
 
   render () {
     return (
       <Router history={history}>
-        <Nav-Footer>
+        <NavFooter>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={PaperContainer} />
 
-            <Route component={Home} />
+            <Route component={PaperContainer} />
           </Switch>
-        </Nav-Footer>
+        </NavFooter>
       </Router>
     )
   }
@@ -34,11 +35,12 @@ class Routes extends Component {
 /* -----------------   SUBSCRIBE ROUTES TO STORE    ------------------ */
 
 const mapState = null
-const mapDispatch = (dispatch) => ({
-  loadInitialState: () => {
-    // get all campuses
-    // get all students
-  }
-})
+const mapDispatch = null
+// (dispatch) => ({
+// loadInitialState: () => {
+//   // get all campuses
+//   // get all students
+// }
+// })
 
 export default connect(mapState, mapDispatch)(Routes)

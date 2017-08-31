@@ -9,6 +9,7 @@ import createMuiTheme from 'material-ui/styles/theme';
 import {MuiThemeProvider} from 'material-ui/styles';
 /* ----------------  COMPONENTS  ----------------------- */
 import Routes from './routes'
+import PaperContainer from './components/PaperContainer'
 
 /* ----------------  ROOT COMPONENT  ----------------------- */
 
@@ -17,6 +18,6 @@ render(
     <Provider store={store}>
       <Routes />
     </Provider>
-  </MuiThemeProvider >,
+  </MuiThemeProvider>,
   document.getElementById('main')
 )

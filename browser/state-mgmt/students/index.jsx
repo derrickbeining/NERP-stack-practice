@@ -21,3 +21,12 @@ export const updateStudent = (student) => ({type: UPDATE_STUDENT, student})
 // ------------------    THUNK CREATORS    ---------------------
 
 // ------------------    REDUCER    ---------------------
+
+function studentsReducer (students = [], action) {
+  switch (action.type) {
+    default:
+      return students
+  }
+}
+
+export default studentsReducer
