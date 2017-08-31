@@ -1,11 +1,13 @@
 import {combineReducers} from 'redux'
 
+import currentView from './currentView'
 import campuses from './campuses'
 import students from './students'
-import viewingCampus from './viewing-campus'
-import viewingStudent from './viewing-student'
+import viewingCampus from './viewingCampus'
+import viewingStudent from './viewingStudent'
 
 const rootReducer = combineReducers({
+  currentView,
   campuses,
   students,
   viewingCampus,
@@ -13,7 +15,8 @@ const rootReducer = combineReducers({
 })
 
 export default rootReducer
+export * from './currentView'
 export * from './campuses'
 export * from './students'
-export * from './viewing-campus'
-export * from './viewing-student'
+export * from './viewingCampus'
+export * from './viewingStudent'
