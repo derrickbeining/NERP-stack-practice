@@ -1,17 +1,22 @@
 'use strict'
+/* ----------------  UTILITIES  ----------------------- */
 import React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
-import Theme from 'material-ui/styles/MuiThemeProvider'
+import store from './state-mgmt'
+/* ----------------  MATERIAL-UI STYLING  ----------------------- */
+import createMuiTheme from 'material-ui/styles/theme';
+import {MuiThemeProvider} from 'material-ui/styles';
+/* ----------------  COMPONENTS  ----------------------- */
+import Routes from './routes'
 
-import store from './store'
-import PaperContainer from './components/PaperContainer'
+/* ----------------  ROOT COMPONENT  ----------------------- */
 
 render(
-  <Theme >
+  <MuiThemeProvider theme={createMuiTheme()} >
     <Provider store={store}>
-      <PaperContainer />
+      <Routes />
     </Provider>
-  </Theme>,
+  </MuiThemeProvider >,
   document.getElementById('main')
 )

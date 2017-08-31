@@ -1,22 +1,39 @@
-import React from 'react';
-import Paper from 'material-ui/Paper';
-import TableControlled from './TableControlled'
+// @flow weak
 
-const style = {
-  height: '100vh',
-  width: '100%',
-  maxWidth: '900px',
-  margin: '0 auto',
-  textAlign: 'center',
-  display: 'block',
+import React from 'react';
+import PropTypes from 'prop-types';
+import {withStyles} from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
+import TableControlled from './TableControlled';
+
+const styles = theme => ({
+  root: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 3,
+  }),
+});
+
+function PaperSheet (props) {
+  const classes = props.classes;
+  return (
+    <div>
+      <Paper className={classes.root} elevation={4}>
+        <Typography type="headline" component="h3">
+          This is a sheet of paper.
+        </Typography>
+        <Typography type="body1" component="p">
+          Paper can be used to build surface or other elements for your application.
+        </Typography>
+        <TableControlled />
+      </Paper>
+    </div>
+  );
+}
+
+PaperSheet.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
-const PaperExampleRounded = () => (
-  <div>
-    <Paper style={style} zDepth={2} rounded={false}>
-      <TableControlled />
-    </Paper>
-  </div>
-);
-
-export default PaperExampleRounded;
+export default withStyles(styles)(PaperSheet);
