@@ -1,8 +1,8 @@
 /* eslint-disable class-methods-use-this, react/prefer-stateless-function */
 /* ----------------  UTILITIES  ----------------------- */
-import React, {Component} from 'React'
-import {connect} from 'react-redux'
-import Router from 'react-router'
+import React, {Component} from 'react'
+// import {connect} from 'react-redux'
+import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import history from './history'
 /* ----------------  COMPONENTS  ----------------------- */
