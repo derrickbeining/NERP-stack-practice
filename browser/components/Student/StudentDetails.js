@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import {
+  fetchingStudentById,
+  viewStudent,
   deletingStudent,
   fetchingStudents
 } from '../../state-mgmt'
@@ -22,7 +24,7 @@ import Typography from 'material-ui/Typography'
 import Avatar from 'material-ui/Avatar'
 import Grid from 'material-ui/Grid'
 import Button from 'material-ui/Button';
-import DialogButton from './StudentEditDialog'
+import EditDialog from './StudentEditDialog'
 
 class StudentDetails extends React.Component {
   constructor(props) {
@@ -31,6 +33,11 @@ class StudentDetails extends React.Component {
       dialogIsOpen: false,
     }
   }
+
+  // componentDidMount () {
+  //   const id = this.props.match.params.id
+  //   this.props.getStudentById(id)
+  // }
 
   handleRequestClose = value => {
     this.setState({dialogIsOpen: false});
@@ -97,7 +104,8 @@ class StudentDetails extends React.Component {
                   Edit
                </Button>
 
-                <DialogButton
+                <EditDialog
+                  student={student}
                   // selectedValue={this.state.selectedValue}
                   open={this.state.dialogIsOpen}
                   onRequestClose={this.handleRequestClose}
@@ -164,6 +172,12 @@ const mapDispatch = () => (dispatch, {history}) => ({
       .then(() => dispatch(fetchingStudents()))
       .catch(console.error.bind(console))
     history.push('/students')
+  },
+
+  getStudentById: (id) => {
+    fetchingStudentById(id)
+      .then(student => dispatch(viewStudent(student)))
+      .catch(console.error.bind(console))
   }
 })
 

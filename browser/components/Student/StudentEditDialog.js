@@ -1,22 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import StudentEditForm from './StudentEditForm'
 import {withStyles} from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Avatar from 'material-ui/Avatar';
 import List, {ListItem, ListItemAvatar, ListItemText} from 'material-ui/List';
-import Dialog, {DialogTitle} from 'material-ui/Dialog';
+import Dialog, {
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  DialogContentText
+} from 'material-ui/Dialog';
 import PersonIcon from 'material-ui-icons/Person';
 import AddIcon from 'material-ui-icons/Add';
 import Typography from 'material-ui/Typography';
 import blue from 'material-ui/colors/blue';
 
-const emails = [ 'username@gmail.com', 'user02@gmail.com' ];
-const styles = {
-  avatar: {
-    background: blue[ 100 ],
-    color: blue[ 600 ],
-  },
-};
+
+
 
 class SimpleDialog extends React.Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class SimpleDialog extends React.Component {
     this.handleListItemClick = this.handleListItemClick.bind(this)
   }
 
-  handleRequestClose () {
+  handleRequestClose = () => {
     this.props.onRequestClose(this.props.selectedValue);
   };
 
@@ -39,18 +41,35 @@ class SimpleDialog extends React.Component {
     return (
       <Dialog onRequestClose={this.handleRequestClose} {...other}>
         <DialogTitle>Edit Student Info</DialogTitle>
-        <div>
-          <List>
-            <ListItem>
-              <ListItemText primary="Text Input Here" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="Text Input Here" />
-            </ListItem>
-          </List>
-        </div>
-        <Button color="primary">Save</Button>
-        <Button color="accent">Cancel</Button>
+        <DialogContent>
+          <DialogContentText>
+            Update the student's information then click save.
+          </DialogContentText>
+
+          <StudentEditForm
+            student={student}
+            handleParentRequestClose={this.handleRequestClose}
+          />
+
+        </DialogContent>
+        {/* <DialogActions>
+          <Button
+            raised
+            color="primary"
+            className={classes.button}
+            onClick={this.handleRequestClose}
+          >
+            Save
+            </Button>
+          <Button
+            raised
+            color="accent"
+            className={classes.button}
+            onClick={this.handleRequestClose}
+          >
+            Cancel
+          </Button>
+        </DialogActions> */}
       </Dialog>
     );
   }
@@ -61,6 +80,16 @@ SimpleDialog.propTypes = {
   onRequestClose: PropTypes.func,
   selectedValue: PropTypes.string,
 };
+
+const styles = theme => ({
+  avatar: {
+    background: blue[ 100 ],
+    color: blue[ 600 ],
+  },
+  button: {
+    margin: theme.spacing.unit,
+  }
+})
 
 const SimpleDialogWrapped = withStyles(styles)(SimpleDialog)
 

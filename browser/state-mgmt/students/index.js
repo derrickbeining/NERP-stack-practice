@@ -26,8 +26,17 @@ export const fetchingStudents = () => dispatch => {
     .catch(console.error.bind(console))
 }
 
-export const updatingStudent = (id) => dispatch => {
-  return axios.put(`/api/students/${id}`)
+export const fetchingStudentById = (id) => () => {
+  return axios.get(`api/students/${id}`)
+    .then(res => res.data)
+    .then(student => {
+      return student
+    })
+    .catch(console.error.bind(console))
+}
+
+export const updatingStudent = (student) => dispatch => {
+  return axios.put(`/api/students/${student.id}`, student)
     .then(res => res.data)
     .then(updatedStudent => {
       dispatch(updateStudent(updatedStudent))
