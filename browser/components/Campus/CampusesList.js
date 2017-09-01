@@ -48,4 +48,9 @@ const styles = theme => ({
   },
 })
 
-export default withStyles(styles)(CampusesList)
+const mapState = ({campuses}) => ({campuses})
+const mapDispatch = null
+
+
+const styledCampusList = withStyles(styles)(CampusesList)
+export default connect(mapState, mapDispatch)(styledCampusList)

@@ -2,11 +2,28 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux'
+
 import {withStyles} from 'material-ui/styles';
 import List, {ListItem, ListItemIcon, ListItemText} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
-import InboxIcon from 'material-ui-icons/Inbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
+import StudentListItem from './StudentListItem'
+
+function StudentsList ({classes, students}) {
+  return (
+    <div className={classes.root}>
+      <List>
+        {students.map(student => {
+          return <StudentListItem key={student.id} student={student} />
+        })}
+      </List>
+    </div>
+  );
+}
+
+StudentsList.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 const styles = theme => ({
   root: {
@@ -17,39 +34,12 @@ const styles = theme => ({
   },
 });
 
-function StudentsList (props) {
-  const classes = props.classes;
-  return (
-    <div className={classes.root}>
-      <List>
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <DraftsIcon />
-          </ListItemIcon>
-          <ListItemText primary="Drafts" />
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        <ListItem button>
-          <ListItemText primary="Trash" />
-        </ListItem>
-        <ListItem button component="a" href="#simple-list">
-          <ListItemText primary="Spam" />
-        </ListItem>
-      </List>
-    </div>
-  );
-}
+const styledStudentList = withStyles(styles)(StudentsList)
 
-StudentsList.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+const mapState = ({students}) => ({
+  students
+})
 
-export default withStyles(styles)(StudentsList);
+const mapDispatch = null
+
+export default connect(mapState, mapDispatch)(styledStudentList)

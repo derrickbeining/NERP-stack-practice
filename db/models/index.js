@@ -11,6 +11,17 @@ const Campus = require('./campus')
 Student.Campus = Student.belongsTo(Campus)
 Campus.Students = Campus.hasMany(Student)
 
+Student.addScope(
+  'defaultScope',
+  {include: [ {model: Campus}]},
+  {override: true}
+)
+// Campus.addScope(
+//   'defaultScope',
+//   {include: [ {model: Student}]},
+//   {override: true}
+// )
+
 module.exports = {
   Student,
   Campus

@@ -1,16 +1,16 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import {TableCell, TableRow} from 'material-ui/Table';
+import AvatarListItem from '../material/AvatarListItem'
 
-
-function CampusListItem ({campus, key}) {
+function CampusListItem ({campus}) {
   return (
-    <TableRow key={key}>
+    <TableRow>
       <TableCell>
-        <NavLink to={`/campuses/${campus.id}`}>
+        <Link to={`/campuses/${campus.id}`}>
           {campus.name}
-        </NavLink>
+        </Link>
       </TableCell>
     </TableRow>
   )
