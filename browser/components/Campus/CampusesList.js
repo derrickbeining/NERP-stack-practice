@@ -43,7 +43,7 @@ const styles = theme => ({
     maxWidth: 900,
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: theme.spacing.unit * 3,
+    marginTop: '75px',
     overflowX: 'auto',
   },
 })

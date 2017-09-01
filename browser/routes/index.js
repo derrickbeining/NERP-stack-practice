@@ -8,7 +8,9 @@ import history from './history'
 /* ----------------  COMPONENTS  ----------------------- */
 import Home from '../components/Home'
 import Campuses from '../components/Campus/CampusesList'
+import CampusDetails from '../components/Campus/CampusDetails'
 import Students from '../components/Student/StudentsList'
+import StudentDetails from '../components/Student/StudentDetails'
 import NavFooter from '../components/NavFooter'
 /* ----------------  ROUTES COMPONENT ------------------ */
 
@@ -25,7 +27,9 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/home" component={Home} />
             <Route exact path="/campuses" component={Campuses} />
+            <Route path="/campuses/:id" component={CampusDetails} />
             <Route exact path="/students" component={Students} />
+            <Route path="/students/:id" component={StudentDetails} />
 
             <Route component={Home} />
           </Switch>

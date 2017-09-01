@@ -10,12 +10,14 @@ const UNVIEW_STUDENT = 'UNVIEW_STUDENT'
 export const viewStudent = (student) => ({type: VIEW_STUDENT, student})
 export const unviewStudent = () => ({type: UNVIEW_STUDENT})
 
-// ------------------    THUNK CREATORS    ---------------------
-
 // ------------------    REDUCER    ---------------------
 
 function viewingStudentReducer (viewingStudent = {}, action) {
   switch (action.type) {
+    case VIEW_STUDENT:
+      return action.student
+    case UNVIEW_STUDENT:
+      return {}
     default:
       return viewingStudent
   }

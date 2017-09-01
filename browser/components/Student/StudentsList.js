@@ -28,7 +28,7 @@ StudentsList.propTypes = {
 const styles = theme => ({
   root: {
     width: '100%',
-    margin: '30px auto 0 auto',
+    margin: '50px auto 0 auto',
     maxWidth: 900,
     background: theme.palette.background.paper,
   },

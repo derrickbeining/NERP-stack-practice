@@ -39,7 +39,7 @@ function creatingCampusWithStudents () {
   return Campus.create({
     name,
     imageUrl: dummy.image.imageUrl(),
-    students: buildNStudents(10)
+    students: buildNStudents(20)
   }, {
       include: [ {
         association: Campus.Students
@@ -59,7 +59,7 @@ function creatingNCampusesWithStudents (num) {
 db.sync({force: true})
   .then(() => {
     console.log(yellow('Seeding the DB'))
-    return creatingNCampusesWithStudents(4)
+    return creatingNCampusesWithStudents(10)
   })
   .then(() => console.log(yellow('DB seeded successfully')))
   .then(() => db.close())

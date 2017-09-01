@@ -1,21 +1,28 @@
 import React from 'react';
+import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import history from '../../routes/history'
+import {viewStudent as view} from '../../state-mgmt'
+
 import {
   ListItem,
-  ListItemIcon,
   ListItemText,
   ListItemSecondaryAction
 } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import history from '../../routes/history'
 
-function StudentListItem ({student}) {
+function StudentListItem ({student, view}) {
+
+  function handleClick () {
+    view(student)
+    history.push(`/students/${student.id}`)
+  }
 
   return (
     <ListItem
       button
       divider
-      onClick={() => history.push(`/students/${student.id}`)}
+      onClick={handleClick}
     >
       <Avatar alt={student.name} src={student.imageUrl} />
       <ListItemText
@@ -32,4 +39,6 @@ function StudentListItem ({student}) {
   )
 }
 
-export default StudentListItem
+const mapDispatch = {view}
+
+export default connect(null, mapDispatch)(StudentListItem)

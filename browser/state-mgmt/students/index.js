@@ -26,10 +26,34 @@ export const fetchingStudents = () => dispatch => {
     .catch(console.error.bind(console))
 }
 
+export const updatingStudent = (id) => dispatch => {
+  return axios.put(`/api/students/${id}`)
+    .then(res => res.data)
+    .then(updatedStudent => {
+      dispatch(updateStudent(updatedStudent))
+      return updatedStudent
+    })
+    .catch(console.error.bind(console))
+}
+
+export const deletingStudent = (id) => dispatch => {
+  return axios.delete(`api/students/${id}`)
+}
+
 // ------------------    REDUCER    ---------------------
 
 function studentsReducer (students = [], action) {
   switch (action.type) {
+    case ADD_STUDENT:
+      return [ ...students, action.student ]
+    case DELETE_STUDENT:
+      return students.filter(({id}) => id !== action.student.id)
+    case UPDATE_STUDENT:
+      return students.map(student => {
+        return student.id === action.student.id
+          ? action.student
+          : student
+      })
     case LOAD_STUDENTS:
       return action.students
     default:

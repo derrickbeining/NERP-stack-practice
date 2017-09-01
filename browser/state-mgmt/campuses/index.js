@@ -26,10 +26,34 @@ export const fetchingCampuses = () => dispatch => {
     .catch(console.error.bind(console))
 }
 
+export const updatingCampus = (id) => dispatch => {
+  return axios.put(`/api/campuses/${id}`)
+    .then(res => res.data)
+    .then(updatedCampus => {
+      dispatch(updateCampus(updatedCampus))
+      return updatedCampus
+    })
+    .catch(console.error.bind(console))
+}
+
+export const deletingCampus = (id) => dispatch => {
+  return axios.delete(`api/campuses/${id}`)
+}
+
 // ------------------    REDUCER    ---------------------
 
 function campusesReducer (campuses = [], action) {
   switch (action.type) {
+    case ADD_CAMPUS:
+      return [ ...campuses, action.campus ]
+    case DELETE_CAMPUS:
+      return campuses.filter(({id}) => id !== action.campus.id)
+    case UPDATE_CAMPUS:
+      return campuses.map(campus => {
+        return campus.id === action.campus.id
+          ? action.campus
+          : campus
+      })
     case LOAD_CAMPUSES:
       return action.campuses
     default:
