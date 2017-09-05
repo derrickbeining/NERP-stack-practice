@@ -38,7 +38,7 @@ function creatingCampusWithStudents () {
   ].join(' ')
   return Campus.create({
     name,
-    imageUrl: dummy.image.imageUrl(),
+    imageUrl: dummy.image.city(),
     students: buildNStudents(10)
   }, {
       include: [ {

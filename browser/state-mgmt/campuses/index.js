@@ -26,12 +26,12 @@ export const fetchingCampuses = () => dispatch => {
     .catch(console.error.bind(console))
 }
 
-export const updatingCampus = (id) => dispatch => {
-  return axios.put(`/api/campuses/${id}`)
+export const updatingCampus = (updatedCampus) => dispatch => {
+  return axios.put(`/api/campuses/${updatedCampus.id}`, updatedCampus)
     .then(res => res.data)
-    .then(updatedCampus => {
-      dispatch(updateCampus(updatedCampus))
-      return updatedCampus
+    .then(dbUpdatedCampus => {
+      dispatch(updateCampus(dbUpdatedCampus))
+      return dbUpdatedCampus
     })
     .catch(console.error.bind(console))
 }

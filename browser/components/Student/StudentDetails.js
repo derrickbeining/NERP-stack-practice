@@ -167,6 +167,7 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = () => (dispatch, {history}) => ({
+
   deleteStudent: (id) => {
     dispatch(deletingStudent(id))
       .then(() => dispatch(fetchingStudents()))

@@ -1,19 +1,37 @@
 import React from 'react';
+import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import history from '../../routes/history'
+import {viewCampus} from '../../state-mgmt'
 
-import {TableCell, TableRow} from 'material-ui/Table';
-import AvatarListItem from '../material/AvatarListItem'
+import {
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction
+} from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
 
-function CampusListItem ({campus}) {
+function CampusListItem ({campus, viewCampus}) {
+
+  function handleClick () {
+    viewCampus(campus)
+    history.push(`/campuses/${campus.id}`)
+  }
+
   return (
-    <TableRow>
-      <TableCell>
-        <Link to={`/campuses/${campus.id}`}>
-          {campus.name}
-        </Link>
-      </TableCell>
-    </TableRow>
+    <ListItem
+      button
+      divider
+      onClick={handleClick}
+    >
+      <Avatar alt={campus.name} src={campus.imageUrl} />
+      <ListItemText
+        primary={campus.name}
+      />
+    </ListItem>
   )
 }
 
-export default CampusListItem
+const mapDispatch = {viewCampus}
+
+export default connect(null, mapDispatch)(CampusListItem)

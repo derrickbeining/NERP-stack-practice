@@ -36,8 +36,8 @@ const styles = theme => ({
 
 const styledStudentList = withStyles(styles)(StudentsList)
 
-const mapState = ({students}) => ({
-  students
+const mapState = (state, ownProps) => ({
+  students: ownProps.students || state.students
 })
 
 const mapDispatch = null
